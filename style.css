@@ -40,6 +40,7 @@ header p {
 /* Timeline Section */
 section {
   display: flex;
+  flex-wrap: nowrap;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 2rem 1rem;
@@ -72,7 +73,7 @@ section img {
   margin: 0.5rem 0;
 }
 
-/* Paragraph text (hidden by default, shown on hover) */
+/* Paragraph text (hidden by default, shown on hover for desktop) */
 section > div p {
   opacity: 0;
   max-height: 0;
@@ -82,7 +83,7 @@ section > div p {
   color: #333;
 }
 
-/* Reveal only hovered card's text */
+/* Reveal only hovered card's text (desktop only) */
 section > div:hover p {
   opacity: 1;
   max-height: 300px;
@@ -102,10 +103,12 @@ body > p:last-of-type {
   section {
     flex-direction: column;
     overflow-x: visible;
+    scroll-snap-type: none;
   }
 
   section > div {
     width: 100%;
+    flex: 1 1 auto;
   }
 
   header h1 {
@@ -118,7 +121,8 @@ body > p:last-of-type {
 
   /* Always show paragraph text on mobile */
   section > div p {
-    opacity: 1;
-    max-height: none;
+    opacity: 1 !important;
+    max-height: none !important;
+    margin-top: 0.5rem;
   }
 }
