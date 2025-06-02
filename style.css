@@ -1,4 +1,4 @@
-/* Reset & base styles */
+/* General Reset and Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -54,27 +54,39 @@ section > div {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   scroll-snap-align: start;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Card hover effect */
 section > div:hover {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-section h2 {
-  color: #0071c5;
-  font-size: 1.5rem;
-}
-
-section h3 {
-  margin-top: 0.25rem;
-  font-size: 1.1rem;
-}
-
+/* Images in cards */
 section img {
   width: 100%;
   border-radius: 0.5rem;
   margin: 0.5rem 0;
+}
+
+/* Paragraph text (hidden by default, shown on hover) */
+section > div p {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Reveal only hovered card's text */
+section > div:hover p {
+  opacity: 1;
+  max-height: 300px;
+  margin-top: 0.5rem;
 }
 
 /* Footer Note */
@@ -85,7 +97,7 @@ body > p:last-of-type {
   margin-top: 1rem;
 }
 
-/* Mobile styles */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
   section {
     flex-direction: column;
@@ -102,5 +114,11 @@ body > p:last-of-type {
 
   header p {
     font-size: 1rem;
+  }
+
+  /* Always show paragraph text on mobile */
+  section > div p {
+    opacity: 1;
+    max-height: none;
   }
 }
